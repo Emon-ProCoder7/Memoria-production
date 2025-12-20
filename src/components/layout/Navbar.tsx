@@ -26,7 +26,11 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <img src="/my-logo.png" alt="Company Logo" className="h-8 w-auto" />
+          <img 
+            src="/my-logo.png" 
+            alt="Company Logo" 
+            className="h-12 w-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,0.1)]" 
+          />
         </a>
 
         {/* Desktop Nav */}
