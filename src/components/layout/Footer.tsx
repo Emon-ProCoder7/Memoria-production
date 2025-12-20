@@ -49,7 +49,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>hello@memoria.com</span>
+                <span>info.memoriaproduction@gmail.com</span>
               </li>
             </ul>
             <div className="flex gap-4 mt-8">
@@ -77,6 +77,7 @@ export function Footer() {
     </footer>
   );
 }
+
 
 
 
