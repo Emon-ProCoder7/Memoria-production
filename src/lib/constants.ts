@@ -8,7 +8,7 @@ export const IMAGES = {
   },
   gallery: [
     "https://images.unsplash.com/photo-1696238230265-6f4708cb4755?q=80&w=800&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1561749747-8eada3d8ad5c?q=80&w=800&auto=format&fit=crop",
+    "https://plus.unsplash.com/premium_photo-1711305772151-20c02a2f167f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1721747994983-96d23e197487?q=80&w=800&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1765854638659-aa17a6b00543?q=80&w=800&auto=format&fit=crop",
     "https://images.unsplash.com/photo-1689455613365-39fa7720e841?q=80&w=800&auto=format&fit=crop",
@@ -32,3 +32,4 @@ export const SOCIALS = [
   { icon: Facebook, href: '#' },
   { icon: Twitter, href: '#' },
 ];
+
