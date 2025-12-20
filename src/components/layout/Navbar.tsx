@@ -29,7 +29,7 @@ export function Navbar() {
           <img 
             src="/my-logo.png" 
             alt="Company Logo" 
-            className="h-12 w-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,0.1)]" 
+            className="h-18 w-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,0.1)]" 
           />
         </a>
 
@@ -86,3 +86,4 @@ export function Navbar() {
     </nav>
   );
 }
+
