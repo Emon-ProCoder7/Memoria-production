@@ -8,11 +8,8 @@ export function Footer() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-                <Camera className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-2xl font-serif font-bold text-white">Memoria</span>
+            <div className="flex items-center">
+              <img src="/my-logo.png" alt="Memoria" className="h-16" />
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Capturing life's most precious moments with cinematic elegance and timeless style. On-demand photography and videography services.
@@ -70,7 +67,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© 2026 Memoria. All rights reserved.</p>
+          <p>© 2025 Memoria. All rights reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
@@ -80,4 +77,3 @@ export function Footer() {
     </footer>
   );
 }
-
