@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center">
-              <img src="/my-logo.png" alt="Memoria" className="h-16" />
+              <img src="/my-logo.png" alt="Memoria" className="h-17" />
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Capturing life's most precious moments with cinematic elegance and timeless style. On-demand photography and videography services.
@@ -77,3 +77,4 @@ export function Footer() {
     </footer>
   );
 }
+
