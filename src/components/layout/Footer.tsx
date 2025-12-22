@@ -41,7 +41,7 @@ export function Footer() {
             <ul className="space-y-4 text-muted-foreground">
               <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>123 Creative Studio, LA</span>
+                <span>1209 MOUNTAIN ROAD   PL NE STE R,   ALBUQUERQUE, NM 87110</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary" />
@@ -77,6 +77,7 @@ export function Footer() {
     </footer>
   );
 }
+
 
 
 
