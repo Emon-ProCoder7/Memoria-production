@@ -30,8 +30,9 @@ export const NAV_LINKS = [
 export const SOCIALS = [
   { icon: Instagram, href: 'https://www.instagram.com/memoriaproduction2025/' },
   { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61584325352640' },
-  { icon: Twitter, href: '#' },
+  { icon: Twitter, href: 'https://x.com/Memoria_2025' },
 ];
+
 
 
 
