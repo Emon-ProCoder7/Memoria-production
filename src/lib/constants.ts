@@ -28,8 +28,9 @@ export const NAV_LINKS = [
 ];
 
 export const SOCIALS = [
-  { icon: Instagram, href: '#' },
+  { icon: Instagram, href: 'https://www.instagram.com/memoriaproduction2025/' },
   { icon: Facebook, href: '#' },
   { icon: Twitter, href: '#' },
 ];
+
 
