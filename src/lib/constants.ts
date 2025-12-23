@@ -4,17 +4,17 @@ export const IMAGES = {
   hero: {
     proposal: "https://images.unsplash.com/photo-1622604061314-28cfb3ac2544?q=80&w=2000&auto=format&fit=crop",
     // This is the Hero/Background image (Original)
-    wedding: "https://images.unsplash.com/photo-1617725479587-fe85eeb7306e?q=80&w=2000&auto=format&fit=crop",
+    wedding: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/dip%20wedding%20copuple.jpg",
     birthday: "https://images.unsplash.com/photo-1533294160622-d5fece3e080d?q=80&w=2000&auto=format&fit=crop",
   },
   // This NEW section controls the images in "Our Expertise"
   services: {
     // This is YOUR new wedding image
-    wedding: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/dip%20wedding%20copuple.jpg",
+    wedding: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/Kissing%20forehead%20couple.jpg",
     proposals: "https://images.unsplash.com/photo-1622604061314-28cfb3ac2544?q=80&w=2000&auto=format&fit=crop",
     birthday: "https://images.unsplash.com/photo-1533294160622-d5fece3e080d?q=80&w=2000&auto=format&fit=crop",
     // Paste your NEW corporate link here
-    corporate: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000&auto=format&fit=crop",
+    corporate: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/Corporate%20Dinining%20discuss.jpg",
   },
   gallery: [
     "https://images.unsplash.com/photo-1696238230265-6f4708cb4755?q=80&w=800&auto=format&fit=crop",
@@ -26,7 +26,7 @@ export const IMAGES = {
   ],
   cutouts: {
     // Simulated cutout URLs (in reality we would use real PNGs)
-    bride: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/beautiful-bride-groom-portrait-cutout.png", 
+    bride: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/interracial%20wedding%20smile%20sligh%20black.jpg", 
   }
 };
 
@@ -44,4 +44,5 @@ export const SOCIALS = [
   { icon: Music2, href: 'https://www.tiktok.com/@memoriaproduction?is_from_webapp=1&sender_device=pc' },
   { icon: Youtube, href: 'https://www.youtube.com/channel/UC-YChWl43MNJ54k7aH5D0ew' },
 ];
+
 
