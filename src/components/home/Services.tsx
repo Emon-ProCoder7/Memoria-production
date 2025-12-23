@@ -8,25 +8,26 @@ const SERVICES = [
   {
     title: "Weddings",
     description: "Cinematic storytelling for your special day.",
-    image: IMAGES.hero.wedding,
+    // Use the NEW services image
+    image: IMAGES.services.wedding,
     colSpan: "md:col-span-2"
   },
   {
     title: "Proposals",
     description: "Capturing the 'Yes' moment forever.",
-    image: IMAGES.hero.proposal,
+    image: IMAGES.services.proposals,
     colSpan: "md:col-span-1"
   },
   {
     title: "Birthdays",
     description: "Joyful celebrations with loved ones.",
-    image: IMAGES.hero.birthday,
+    image: IMAGES.services.birthday,
     colSpan: "md:col-span-1"
   },
   {
     title: "Corporate",
     description: "Professional branding and events.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000&auto=format&fit=crop",
+    image: IMAGES.services.corporate,
     colSpan: "md:col-span-2"
   }
 ];
@@ -105,3 +106,4 @@ export function Services() {
     </section>
   );
 }
+
