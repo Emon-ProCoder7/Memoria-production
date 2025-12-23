@@ -26,7 +26,7 @@ export const IMAGES = {
   ],
   cutouts: {
     // Simulated cutout URLs (in reality we would use real PNGs)
-    bride: "https://images.unsplash.com/photo-1617725479587-fe85eeb7306e?q=80&w=800&auto=format&fit=crop", 
+    bride: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/beautiful-bride-groom-portrait-cutout.png", 
   }
 };
 
@@ -44,3 +44,4 @@ export const SOCIALS = [
   { icon: Music2, href: 'https://www.tiktok.com/@memoriaproduction?is_from_webapp=1&sender_device=pc' },
   { icon: Youtube, href: 'https://www.youtube.com/channel/UC-YChWl43MNJ54k7aH5D0ew' },
 ];
+
