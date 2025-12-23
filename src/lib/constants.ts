@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram, Facebook, Youtube, music-2 } from 'lucide-react';
 
 export const IMAGES = {
   hero: {
@@ -31,7 +31,10 @@ export const SOCIALS = [
   { icon: Instagram, href: 'https://www.instagram.com/memoriaproduction2025/' },
   { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61584325352640' },
   { icon: Twitter, href: 'https://x.com/Memoria_2025' },
+  { icon: music-2, href: 'https://www.tiktok.com/@memoriaproduction?is_from_webapp=1&sender_device=pc' },
+  { icon: Youtube, href: 'https://www.youtube.com/channel/UC-YChWl43MNJ54k7aH5D0ew' },
 ];
+
 
 
 
