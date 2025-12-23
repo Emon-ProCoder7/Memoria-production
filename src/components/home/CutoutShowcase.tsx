@@ -40,8 +40,7 @@ export function CutoutShowcase() {
             {/* Background Shape */}
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-full blur-3xl opacity-30 animate-pulse" />
             
-            {/* Main Image with Mask/Clip Path to simulate Cutout if possible, 
-                but here we use a clean image with a floating effect and strong shadow */}
+            {/* Main Image */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -50,10 +49,10 @@ export function CutoutShowcase() {
               className="relative z-10 w-full max-w-md"
             >
               <div className="relative">
-                {/* Simulated "Cutout" effect using a mask or just a clean image on a shape */}
                 <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl shadow-primary/20 bg-card">
                   <img
-                    src={IMAGES.hero.wedding}
+                    // CHANGED THIS LINE
+                    src={IMAGES.cutouts.bride}
                     alt="Wedding Couple"
                     className="w-full h-auto object-cover"
                   />
