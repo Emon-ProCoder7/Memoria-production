@@ -3,8 +3,11 @@ import { Github, Twitter, Linkedin, Instagram, Facebook, Youtube, Music2 } from 
 export const IMAGES = {
   hero: {
     proposal: "https://images.unsplash.com/photo-1622604061314-28cfb3ac2544?q=80&w=2000&auto=format&fit=crop",
-    wedding: "https://images.unsplash.com/photo-1617725479587-fe85eeb7306e?q=80&w=2000&auto=format&fit=crop",
+    // Updated with your GitHub link (no parameters needed)
+    wedding: "https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/dip%20wedding%20copuple.jpg",
     birthday: "https://images.unsplash.com/photo-1533294160622-d5fece3e080d?q=80&w=2000&auto=format&fit=crop",
+    // Replace the link below with your new Corporate image link
+    corporate: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1000&auto=format&fit=crop",
   },
   gallery: [
     "https://images.unsplash.com/photo-1696238230265-6f4708cb4755?q=80&w=800&auto=format&fit=crop",
