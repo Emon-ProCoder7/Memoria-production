@@ -12,7 +12,7 @@ export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
       {/* Background Parallax */}
-      <motion.div 
+      <motion.div
         style={{ y, opacity }}
         className="absolute inset-0 z-0"
       >
@@ -42,9 +42,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-tight tracking-tight"
         >
-          Memoria Production<br />
+          Capture Life's <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-primary italic pr-2">
-            Capturing Your Legacy
+            Masterpieces
           </span>
         </motion.h1>
 
@@ -54,7 +54,7 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Professional photographers and videographers at your fingertips. 
+          Professional photographers and videographers at your fingertips.
           From weddings to corporate events, we turn moments into timeless memories.
         </motion.p>
 
@@ -64,10 +64,12 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.8 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <Button size="lg" className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg shadow-glow hover:scale-105 transition-all duration-300">
-            Book Your Session
-            <ArrowRight className="ml-2 w-5 h-5" />
-          </Button>
+          <a href="https://calendar.app.google/jHiSKAuPo3rzR5if8" target="_blank" rel="noopener noreferrer">
+            <Button size="lg" className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg shadow-glow hover:scale-105 transition-all duration-300">
+              Book Your Session
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+          </a>
           <Button size="lg" variant="outline" className="h-14 px-8 rounded-full border-white/20 text-white hover:bg-white/10 text-lg backdrop-blur-sm">
             <Play className="mr-2 w-5 h-5 fill-current" />
             Watch Showreel
@@ -88,4 +90,3 @@ export function Hero() {
     </section>
   );
 }
-
