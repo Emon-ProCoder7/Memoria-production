@@ -5,6 +5,8 @@ import { NAV_LINKS } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
+import { GoogleCalendarButton } from '@/components/ui/GoogleCalendarButton';
+
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,10 +28,10 @@ export function Navbar() {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <img 
-            src="/my-logo.png" 
-            alt="Company Logo" 
-            className="h-16 w-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,0.1)]" 
+          <img
+            src="/my-logo.png"
+            alt="Company Logo"
+            className="h-16 w-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,0.1)]"
           />
         </a>
 
@@ -44,9 +46,7 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <Button variant="default" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
-            Book Now
-          </Button>
+          <GoogleCalendarButton />
         </div>
 
         {/* Mobile Toggle */}
@@ -78,7 +78,9 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <Button className="w-full bg-primary text-primary-foreground mt-4">Book Now</Button>
+              <div className="mt-4 flex justify-center">
+                <GoogleCalendarButton />
+              </div>
             </div>
           </motion.div>
         )}
@@ -86,7 +88,3 @@ export function Navbar() {
     </nav>
   );
 }
-
-
-
-
