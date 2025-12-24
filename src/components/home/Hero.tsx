@@ -42,9 +42,9 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-tight tracking-tight"
         >
-          Capture Life's <br />
+          Memoria Production<br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-primary-glow to-primary italic pr-2">
-            Masterpieces
+            Capturing Your Legacy
           </span>
         </motion.h1>
 
@@ -88,3 +88,4 @@ export function Hero() {
     </section>
   );
 }
+
