@@ -33,7 +33,7 @@ export const IMAGES = {
 export const NAV_LINKS = [
   { name: 'Home', href: '#' },
   { name: 'Services', href: '#services' },
-  { name: 'Portfolio', href: '#portfolio' },
+  { name: 'Portfolio', href: '/portfolio' },
   { name: 'About', href: '#about' },
 ];
 
@@ -44,5 +44,6 @@ export const SOCIALS = [
   { icon: Music2, href: 'https://www.tiktok.com/@memoriaproduction?is_from_webapp=1&sender_device=pc' },
   { icon: Youtube, href: 'https://www.youtube.com/channel/UC-YChWl43MNJ54k7aH5D0ew' },
 ];
+
 
 
