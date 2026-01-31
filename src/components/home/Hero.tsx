@@ -78,7 +78,11 @@ export function Hero() {
       
       let drawWidth, drawHeight, offsetX, offsetY;
 
-      if (canvasRatio > imgRatio) {
+      const isMobile = window.innerWidth < 768;
+
+      // On mobile, force "fit width" (take the first branch) so the logo isn't cut off.
+      // On desktop, use standard "cover" logic (if canvasRatio > imgRatio...).
+      if (isMobile || canvasRatio > imgRatio) {
         drawWidth = canvas.width;
         drawHeight = canvas.width / imgRatio;
         offsetX = 0;
