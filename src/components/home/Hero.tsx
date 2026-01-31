@@ -143,7 +143,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <span className="inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6 backdrop-blur-sm">
+            <span className="hidden md:inline-block py-1 px-3 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6 backdrop-blur-sm">
               On-Demand Photography & Video
             </span>
           </motion.div>
@@ -174,7 +174,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-20 md:mt-0"
+            className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-4 md:relative md:top-0 md:translate-y-0 md:flex-row md:mt-0"
           >
             <a href="https://calendar.app.google/jHiSKAuPo3rzR5if8" target="_blank" rel="noopener noreferrer" className="pointer-events-auto">
               <Button size="lg" className="h-14 px-8 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg shadow-glow hover:scale-105 transition-all duration-300">
