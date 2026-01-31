@@ -178,10 +178,12 @@ export function Hero() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </a>
-            <Button size="lg" variant="outline" className="h-14 px-8 rounded-full border-white/20 text-white hover:bg-white/10 text-lg backdrop-blur-sm pointer-events-auto">
-              <Play className="mr-2 w-5 h-5 fill-current" />
-              Watch Showreel
-            </Button>
+            <a href="https://memoriaproduction.com/portfolio" target="_blank" rel="noopener noreferrer" className="pointer-events-auto">
+              <Button size="lg" variant="outline" className="h-14 px-8 rounded-full border-white/20 text-white hover:bg-white/10 text-lg backdrop-blur-sm">
+                <Play className="mr-2 w-5 h-5 fill-current" />
+                Watch Showreel
+              </Button>
+            </a>
           </motion.div>
         </motion.div>
 
