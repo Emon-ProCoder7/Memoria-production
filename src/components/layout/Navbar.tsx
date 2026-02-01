@@ -50,6 +50,12 @@ export function Navbar() {
             </a>
           ))}
           <GoogleCalendarButton />
+          <Button
+            onClick={() => window.location.href = '/memoria/contact.html'}
+            className="bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-6 font-semibold"
+          >
+            Quote
+          </Button>
         </div>
 
         {/* Mobile Toggle */}
@@ -81,8 +87,14 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <div className="mt-4 flex justify-center">
+              <div className="mt-4 flex flex-col items-center gap-4">
                 <GoogleCalendarButton />
+                <Button
+                  onClick={() => window.location.href = '/memoria/contact.html'}
+                  className="bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-6 font-semibold w-full max-w-[200px]"
+                >
+                  Quote
+                </Button>
               </div>
             </div>
           </motion.div>
