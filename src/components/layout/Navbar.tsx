@@ -49,13 +49,13 @@ export function Navbar() {
               {link.name}
             </a>
           ))}
-          <GoogleCalendarButton />
-          <Button
-            onClick={() => window.location.href = '/memoria/contact.html'}
-            className="bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-6 font-semibold"
+          <a
+            href="/memoria/contact.html"
+            className="text-sm font-medium text-white/80 hover:text-primary transition-colors"
           >
             Quote
-          </Button>
+          </a>
+          <GoogleCalendarButton />
         </div>
 
         {/* Mobile Toggle */}
@@ -87,14 +87,15 @@ export function Navbar() {
                   {link.name}
                 </a>
               ))}
+              <a
+                href="/memoria/contact.html"
+                className="text-lg font-medium text-white/80 hover:text-primary transition-colors"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Quote
+              </a>
               <div className="mt-4 flex flex-col items-center gap-4">
                 <GoogleCalendarButton />
-                <Button
-                  onClick={() => window.location.href = '/memoria/contact.html'}
-                  className="bg-white text-black hover:bg-gray-200 transition-colors rounded-full px-6 font-semibold w-full max-w-[200px]"
-                >
-                  Quote
-                </Button>
               </div>
             </div>
           </motion.div>
