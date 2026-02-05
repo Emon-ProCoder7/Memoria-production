@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <div className="flex items-center">
-              <img src="/my-logo.png" alt="Memoria" className="h-17" />
+              <img src="/my-logo.png" alt="Memoria" className="h-16" />
             </div>
             <p className="text-muted-foreground leading-relaxed">
               Capturing life's most precious moments with cinematic elegance and timeless style. On-demand photography and videography services.
@@ -19,20 +19,20 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-serif font-semibold text-white mb-6">Services</h4>
             <ul className="space-y-4 text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Wedding Photography</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Engagement Shoots</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Event Videography</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Corporate Branding</a></li>
+              <li><a href="/memoria/portfolio.html" className="hover:text-primary transition-colors">Wedding Photography</a></li>
+              <li><a href="/memoria/portfolio.html" className="hover:text-primary transition-colors">Engagement Shoots</a></li>
+              <li><a href="/memoria/portfolio.html" className="hover:text-primary transition-colors">Event Videography</a></li>
+              <li><a href="/memoria/portfolio.html" className="hover:text-primary transition-colors">Corporate Branding</a></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-serif font-semibold text-white mb-6">Company</h4>
             <ul className="space-y-4 text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Portfolio</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+              <li><a href="/memoria/about.html" className="hover:text-primary transition-colors">About Us</a></li>
+              <li><a href="https://memoriaproduction.com/portfolio" className="hover:text-primary transition-colors">Portfolio</a></li>
+              <li><a href="/memoria/contact.html" className="hover:text-primary transition-colors">Pricing</a></li>
+              <li><a href="/memoria/contact.html" className="hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -41,15 +41,15 @@ export function Footer() {
             <ul className="space-y-4 text-muted-foreground">
               <li className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-primary" />
-                <span>1209 MOUNTAIN ROAD   PL NE STE R,   ALBUQUERQUE, NM 87110</span>
+                <span>1209 Mountain Road PL NE STE R, Albuquerque</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>+1 (323) 990-2599</span>
+                <a href="tel:+13239902599" className="hover:text-primary transition-colors">+1 (323) 990-2599</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>info.memoriaproduction@gmail.com</span>
+                <a href="mailto:info.memoriaproduction@gmail.com" className="hover:text-primary transition-colors">info.memoriaproduction@gmail.com</a>
               </li>
             </ul>
             <div className="flex gap-4 mt-8">
@@ -67,7 +67,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© 2025 Memoria. All rights reserved.</p>
+          <p>© 2026 Memoria Production LLC. All rights reserved.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
@@ -77,11 +77,3 @@ export function Footer() {
     </footer>
   );
 }
-
-
-
-
-
-
-
-
