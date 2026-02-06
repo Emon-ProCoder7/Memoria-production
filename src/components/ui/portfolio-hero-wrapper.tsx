@@ -4,7 +4,7 @@ const PortfolioHeroWrapper = () => {
     const content = {
         src: 'https://res.cloudinary.com/dsy8akinb/video/upload/v1770414997/webpconvert_video_1_qb0j95.mp4',
         poster: 'https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYMNjMlBUYHaeYpxduXPVNwf8mnFA61L7rkcoS',
-        background: 'https://raw.githubusercontent.com/Emon-ProCoder7/Memoria-production/refs/heads/main/public/portfolio_thumbnail.png',
+        background: 'https://raw.githubusercontent.com/Emon-ProCoder7/corpus/refs/heads/main/Memoria%20Gallery/dip%20wedding%20copuple.jpg',
         title: 'Visual Storytelling Redefined',
         date: 'Memoria Production LLC.',
         scrollToExpand: 'Experience the Collection',
