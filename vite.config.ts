@@ -9,6 +9,17 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html'),
+        portfolio: path.resolve(__dirname, 'memoria/portfolio.html'),
+        about: path.resolve(__dirname, 'memoria/about.html'),
+        contact: path.resolve(__dirname, 'memoria/contact.html'),
+        video: path.resolve(__dirname, 'memoria/video-showcase.html'),
+      },
+    },
+  },
   server: {
     port: 3000,
     strictPort: true,
