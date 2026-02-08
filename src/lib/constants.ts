@@ -29,11 +29,7 @@ export const IMAGES = {
 export const NAV_LINKS = [
   { name: 'Home', href: '/' },
   { name: 'Services', href: '/memoria/portfolio.html' },
-  { 
-    name: 'Portfolio', 
-    href: 'https://memoriaproduction.com/portfolio', 
-    target: '_blank'  // Add this line
-  },
+  { name: 'Portfolio', href: 'https://memoriaproduction.com/portfolio' },
   { name: 'About', href: '/memoria/about.html' },
 ];
 
