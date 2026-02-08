@@ -49,7 +49,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:info.memoriaproduction@gmail.com" className="hover:text-primary transition-colors">info.memoriaproduction@gmail.com</a>
+                <a href="mailto:info@memoriaproduction.com" className="hover:text-primary transition-colors">info@memoriaproduction.com</a>
               </li>
             </ul>
             <div className="flex gap-4 mt-8">
@@ -77,3 +77,4 @@ export function Footer() {
     </footer>
   );
 }
+
