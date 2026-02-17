@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Menu, X, Camera } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
@@ -30,31 +31,31 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2 group">
           <img
             src="/my-logo.png"
             alt="Company Logo"
             className="h-16 w-auto transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:drop-shadow-[0_5px_15px_rgba(255,255,255,0.1)]"
           />
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.name}
-              href={link.href}
+              to={link.href}
               className="text-sm font-medium text-white/80 hover:text-primary transition-colors"
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="text-sm font-medium text-white/80 hover:text-primary transition-colors"
           >
             Quote
-          </a>
+          </Link>
           <GoogleCalendarButton />
         </div>
 
@@ -78,22 +79,22 @@ export function Navbar() {
           >
             <div className="container mx-auto px-6 py-8 flex flex-col gap-4">
               {NAV_LINKS.map((link) => (
-                <a
+                <Link
                   key={link.name}
-                  href={link.href}
+                  to={link.href}
                   className="text-lg font-medium text-white/80 hover:text-primary transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="text-lg font-medium text-white/80 hover:text-primary transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Quote
-              </a>
+              </Link>
               <div className="mt-4 flex flex-col items-center gap-4">
                 <GoogleCalendarButton />
               </div>
