@@ -26,9 +26,13 @@ function App() {
         <Route path="/memoria/portfolio.html" element={<Navigate to="/services" replace />} />
         <Route path="/memoria/about.html" element={<Navigate to="/about" replace />} />
         <Route path="/memoria/contact.html" element={<Navigate to="/contact" replace />} />
-        <Route path="/portfolio.html" element={<Navigate to="/services" replace />} />
+        <Route path="/portfolio" element={<ServicesPage activeFilter="all" />} />
+        <Route path="/portfolio.html" element={<Navigate to="/portfolio" replace />} />
         <Route path="/about.html" element={<Navigate to="/about" replace />} />
         <Route path="/contact.html" element={<Navigate to="/contact" replace />} />
+
+        {/* Catch all for 404s or other paths */}
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster />
     </BrowserRouter>
