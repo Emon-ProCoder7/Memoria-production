@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria | On-Demand Photography & Video</title>
+    <meta name="description"
+        content="Explore our stunning portfolio of wedding, proposal, birthday, and corporate photography. Each image tells a unique story of love and celebration.">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ["class"],
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Manrope', 'sans-serif'],
+                        'accent': ['Crimson Text', 'serif']
+                    },
+                    colors: {
+                        'charcoal': '#f2f2f0', // Inverted: Text is now light
+                        'warm-white': '#111823', // Inverted: Background is now dark
+                        'taupe': '#1a2230',      // Darker accent background
+                        'sage': '#386a5a',       // Deep Teal
+                        'warm-gold': '#eaa300',  // Rich Gold
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #111823;
+            color: #f2f2f0;
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .hero-bg {
+            background: linear-gradient(rgba(17, 24, 35, 0.7), rgba(17, 24, 35, 0.7)), url('/assets/hero-portfolio-BIggs0Mm.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .scroll-reveal {
+            opacity: 0.9;
+            transform: translateY(20px);
+        }
+
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #eaa300;
+            color: #111823;
+        }
+
+        .portfolio-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-item img {
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .navbar {
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(17, 24, 35, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 20px;
+            z-index: 1001;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+        }
+
+        @media (max-width: 1024px) {
+            .masonry-grid {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .masonry-grid {
+                column-count: 1;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-overlay {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .project-overlay {
+            opacity: 1;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/portfolio-4zefEBU1.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index-ZCu9abnX.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-D9z3a0YU.css">
+</head>
+
+<body class="bg-warm-white text-charcoal">
+    <!-- Navigation -->
+    <nav class="navbar fixed top-0 left-0 right-0 z-50 py-4">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <div class="logo">
+                <img src="/my-logo.png" alt="Memoria" class="h-16 w-auto">
+            </div>
+
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="/" class="nav-link text-charcoal hover:text-warm-gold transition-colors">Home</a>
+                <a href="/services" class="nav-link text-warm-gold font-semibold">Services</a>
+                <a href="/about"
+                    class="nav-link text-charcoal hover:text-warm-gold transition-colors">About</a>
+                <a href="/contact"
+                    class="nav-link text-charcoal hover:text-warm-gold transition-colors">Quote</a>
+
+                <button
+                    onclick="window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1TDKt_HrwsDEel_E-aDzTZt_Pe2UIiJpuZGDF4Q6bbQgB8pKK6rxQ0SV_nObzC4w5hklH5Paz1?gv=true', '_blank')"
+                    class="bg-warm-gold text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition-all transform hover:scale-105">
+                    Book Now
+                </button>
+            </div>
+
+            <button class="md:hidden mobile-toggle">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu (Hidden by default, toggled via JS) -->
+    <div class="mobile-menu hidden fixed inset-0 z-40 bg-warm-white pt-24 px-6">
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="/" class="text-2xl text-charcoal hover:text-warm-gold">Home</a>
+            <a href="/services" class="text-2xl text-warm-gold">Services</a>
+            <a href="/about" class="text-2xl text-charcoal hover:text-warm-gold">About</a>
+            <a href="/contact" class="text-2xl text-charcoal hover:text-warm-gold">Quote</a>
+            <button
+                onclick="window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1TDKt_HrwsDEel_E-aDzTZt_Pe2UIiJpuZGDF4Q6bbQgB8pKK6rxQ0SV_nObzC4w5hklH5Paz1?gv=true', '_blank')"
+                class="bg-warm-gold text-white px-8 py-3 rounded-full text-xl">
+                Book Now
+            </button>
+        </div>
+    </div>
+
+    <!-- React Hero Mount Point -->
+    <div id="hero-root"></div>
+
+    <!-- Breadcrumb -->
+    <section class="py-8 bg-taupe/30">
+        <div class="container mx-auto px-6">
+            <nav class="flex items-center space-x-2 text-charcoal/70">
+                <a href="/" class="hover:text-warm-gold transition-colors">Home</a>
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-warm-gold font-semibold">Services</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Filter Navigation -->
+    <section class="py-12 scroll-reveal text-center">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button
+                    class="filter-btn active px-6 py-3 rounded-full border-2 border-warm-gold text-warm-white font-semibold hover:bg-warm-gold hover:text-warm-white transition-all"
+                    data-filter="all">
+                    All Work
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full border-2 border-warm-gold text-warm-gold font-semibold hover:bg-warm-gold hover:text-warm-white transition-all"
+                    data-filter="weddings">
+                    Weddings
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full border-2 border-warm-gold text-warm-gold font-semibold hover:bg-warm-gold hover:text-warm-white transition-all"
+                    data-filter="proposals">
+                    Proposals
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full border-2 border-warm-gold text-warm-gold font-semibold hover:bg-warm-gold hover:text-warm-white transition-all"
+                    data-filter="birthdays">
+                    Birthdays
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full border-2 border-warm-gold text-warm-gold font-semibold hover:bg-warm-gold hover:text-warm-white transition-all"
+                    data-filter="corporate">
+                    Corporate
+                </button>
+                <button
+                    class="filter-btn px-6 py-3 rounded-full border-2 border-warm-gold text-warm-gold font-semibold hover:bg-warm-gold hover:text-warm-white transition-all"
+                    data-filter="behind-scenes">
+                    Behind the Scenes
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery -->
+    <section class="pb-20">
+        <div class="container mx-auto px-6">
+            <div class="masonry-grid">
+                <!-- Wedding Photos -->
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/files.worldsbestweddingphotos.com/83c78583606faafd7b06f24df94cb69d05fc557b.jpg"
+                        alt="Golden hour wedding couple" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Golden Hour Romance</h3>
+                            <p class="text-white/80">Sarah & James Wedding</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.brides.com/94700a9cb8694df61f91cfb411ba5322d496d413.jpg"
+                        alt="Wedding reception dancing" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Joyful Celebration</h3>
+                            <p class="text-white/80">Elena & Michael Reception</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.marthastewart.com/da4a358cfaa6a88018d301062e29d58db784f6fd.jpg"
+                        alt="Wedding ceremony altar flowers" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Sacred Moments</h3>
+                            <p class="text-white/80">Garden Ceremony</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/isaidyesfl.com/8ab2103e1023a8866b18a1367b5df410356b7742.jpg"
+                        alt="Wedding reception celebration" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Dance Floor Magic</h3>
+                            <p class="text-white/80">Reception Highlights</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.brides.com/6d355148ae2c38cf684aedfd664ed64fc6443d20.JPG"
+                        alt="Elegant wedding cake" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Sweet Details</h3>
+                            <p class="text-white/80">Wedding Cake Photography</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.kleinfeldbridal.com/3d46fb61daafb175332af291eea77efede2bf4f9.jpg"
+                        alt="Luxury wedding dress details" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Bridal Elegance</h3>
+                            <p class="text-white/80">Dress Detail Photography</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proposal Photos -->
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="proposals">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/4f9243c62d679dc54ea34437a3d99688cfddd8ea.jpeg"
+                        alt="Engagement proposal moment" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">The Perfect Yes</h3>
+                            <p class="text-white/80">Central Park Proposal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="proposals">
+                    <img src="https://kimi-web-img.moonshot.cn/img/shop.designsbyhemingway.com/e74d1476b82a8e1491afbab9a53d36a625e390bf.jpg"
+                        alt="Proposal setup with flowers" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Romantic Setup</h3>
+                            <p class="text-white/80">Proposal Planning</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Corporate Photos -->
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="corporate">
+                    <img src="https://kimi-web-img.moonshot.cn/img/creativeeventsphotography.com.au/8164daf07e43f495655f64237a27365c5fac53de.jpg"
+                        alt="Corporate event photography" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Professional Excellence</h3>
+                            <p class="text-white/80">TechStart Inc. Launch</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="corporate">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.proglobalevents.com/02d99d75d84f582500e4df8c7229293e857ea46a.jpg"
+                        alt="Corporate conference photography" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Conference Coverage</h3>
+                            <p class="text-white/80">Business Event Documentation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Behind the Scenes -->
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="behind-scenes">
+                    <img src="https://raw.githubusercontent.com/Emon-ProCoder7/Memoria-production/refs/heads/main/memoria/resources/memoria%20watermark.jpg"
+                        alt="Photographer behind scenes" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Behind the Lens</h3>
+                            <p class="text-white/80">Professional at Work</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="behind-scenes">
+                    <img src="https://kimi-web-img.moonshot.cn/img/media.dcrainmaker.com/f3a419d7d9c7e21f3c983e992e01629bd8d674db.jpg"
+                        alt="Professional camera equipment" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Professional Gear</h3>
+                            <p class="text-white/80">Equipment Showcase</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="behind-scenes">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.shutterstock.com/2e6f108c934b00b345dbea9aca0bc31fc178d997.jpg"
+                        alt="Photographer with camera" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Artist at Work</h3>
+                            <p class="text-white/80">Capturing the Moment</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Birthday Photos -->
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="birthdays">
+                    <img src="https://kimi-web-img.moonshot.cn/img/media-api.xogrp.com/d063726bd5dbf8c46fd93671b1a2a23daa483daa.2022"
+                        alt="Birthday celebration cake" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Milestone Celebration</h3>
+                            <p class="text-white/80">30th Birthday Party</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="birthdays">
+                    <img src="https://kimi-web-img.moonshot.cn/img/www.eleganttemptations.com/ac9c80edc24f9a402e250516aafc79af3495501a.jpg"
+                        alt="Elegant birthday cake" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Elegant Details</h3>
+                            <p class="text-white/80">Birthday Cake Photography</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Wedding Photos -->
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/amyabbottevents.com/dbc1305906ef6dcfbb2be6d838d91c835425ba80.jpg"
+                        alt="Wedding reception setup" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Reception Elegance</h3>
+                            <p class="text-white/80">Table Setting Photography</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/rusticandmain.com/76572984d516126e4c21730dd0ed10299661904a.png"
+                        alt="Wedding celebration dancing" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Celebration Moments</h3>
+                            <p class="text-white/80">Dance Floor Photography</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="weddings">
+                    <img src="https://kimi-web-img.moonshot.cn/img/static.wixstatic.com/597128c31e94e30d787531c253a8efc2108bf094.jpg"
+                        alt="Wedding party celebration" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Party Atmosphere</h3>
+                            <p class="text-white/80">Reception Highlights</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Corporate -->
+                <div class="masonry-item portfolio-item relative overflow-hidden rounded-2xl shadow-lg"
+                    data-category="corporate">
+                    <img src="https://kimi-web-img.moonshot.cn/img/j5u8f2v8.rocketcdn.me/85775b5cf1561faf2ff3cf5bb1ffaeff9cb408a9.jpeg"
+                        alt="Corporate team photo" class="w-full h-auto object-cover">
+                    <div class="project-overlay absolute inset-0 flex items-end">
+                        <div class="p-6 text-white">
+                            <h3 class="text-xl font-semibold mb-2">Team Photography</h3>
+                            <p class="text-white/80">Corporate Headshots</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button id="load-more"
+                    class="bg-warm-gold text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg">
+                    Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 bg-taupe text-charcoal scroll-reveal border-t border-white/5">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Love What You See?</h2>
+                <p class="text-xl text-charcoal/80 mb-8 leading-relaxed">
+                    Let's create something beautiful together. Every moment deserves to be captured with the same
+                    artistic excellence you see in our portfolio.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <button
+                        onclick="window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1TDKt_HrwsDEel_E-aDzTZt_Pe2UIiJpuZGDF4Q6bbQgB8pKK6rxQ0SV_nObzC4w5hklH5Paz1?gv=true', '_blank')"
+                        class="bg-warm-gold text-warm-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg">
+                        Start Your Journey
+                    </button>
+                    <button onclick="window.location.href='/about'"
+                        class="border-2 border-charcoal text-charcoal px-8 py-4 rounded-full text-lg font-semibold hover:bg-charcoal hover:text-white transition-all transform hover:scale-105">
+                        Meet Our Team
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-taupe py-12">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <div class="mb-8">
+                    <h3 class="text-3xl font-display font-bold text-charcoal mb-4">Memoria Production</h3>
+                    <p class="text-charcoal/70 max-w-2xl mx-auto">
+                        Capturing life's most precious moments with cinematic elegance and timeless style.
+                        Professional photography and videography services for weddings, proposals, birthdays, and
+                        corporate events.
+                    </p>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-between gap-8 mb-8 px-4 md:px-0">
+                    <div class="md:text-left">
+                        <h4 class="font-semibold text-charcoal mb-2">Contact</h4>
+                        <p class="text-charcoal/70">1209 Mountain Road PL NE STE R<br>Albuquerque, NM 87110</p>
+                        <p class="text-charcoal/70"><a href="tel:+13239902599" class="hover:text-warm-gold">+1 (323)
+                                990-2599</a></p>
+                        <p class="text-charcoal/70"><a href="mailto:info@memoriaproduction.com"
+                                class="hover:text-warm-gold">info@memoriaproduction.com</a></p>
+                    </div>
+
+                    <div class="md:text-right">
+                        <h4 class="font-semibold text-charcoal mb-2">Services</h4>
+                        <p class="text-charcoal/70"><a href="/services"
+                                class="hover:text-warm-gold">Wedding Photography</a></p>
+                        <p class="text-charcoal/70"><a href="/services"
+                                class="hover:text-warm-gold">Engagement Shoots</a></p>
+                        <p class="text-charcoal/70"><a href="/services" class="hover:text-warm-gold">Event
+                                Videography</a></p>
+                        <p class="text-charcoal/70"><a href="/services"
+                                class="hover:text-warm-gold">Corporate Branding</a></p>
+                    </div>
+                </div>
+
+                <div class="border-t border-charcoal/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+                    <p class="text-charcoal/70">© 2026 Memoria Production LLC. All rights reserved.</p>
+                    <div class="flex gap-8">
+                        <a href="/privacy-policy" class="text-charcoal/70 hover:text-warm-gold transition-colors">Privacy Policy</a>
+                        <a href="/terms-and-conditions" class="text-charcoal/70 hover:text-warm-gold transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-nav lightbox-prev">&#10094;</span>
+        <span class="lightbox-nav lightbox-next">&#10095;</span>
+        <img class="lightbox-img" src="" alt="">
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+
+    <script>
+        // Additional portfolio-specific functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Toggle Logic
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const mobileMenu = document.querySelector('.mobile-menu');
+
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Initialize masonry layout
+            const masonryGrid = document.querySelector('.masonry-grid');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            // Filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    btn.classList.add('active');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 50);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+
+            // Lightbox navigation
+            let currentImageIndex = 0;
+            const images = Array.from(portfolioItems).map(item => {
+                const img = item.querySelector('img');
+                return {
+                    src: img.src,
+                    alt: img.alt,
+                    title: item.querySelector('h3')?.textContent || '',
+                    subtitle: item.querySelector('p')?.textContent || ''
+                };
+            });
+
+            // Enhanced lightbox functionality
+            portfolioItems.forEach((item, index) => {
+                item.addEventListener('click', function () {
+                    currentImageIndex = index;
+                    showLightbox(currentImageIndex);
+                });
+            });
+
+            function showLightbox(index) {
+                const lightbox = document.querySelector('.lightbox');
+                const lightboxImg = document.querySelector('.lightbox-img');
+
+                // Handle cases where filtering changes the visible index
+                // Note: simplified for this demo, ideally would only traverse visible items
+                if (images[index]) {
+                    lightboxImg.src = images[index].src;
+                    lightboxImg.alt = images[index].alt;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            document.querySelector('.lightbox-close').addEventListener('click', () => {
+                document.querySelector('.lightbox').classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Lightbox navigation
+            document.querySelector('.lightbox-prev').addEventListener('click', function () {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                showLightbox(currentImageIndex);
+            });
+
+            document.querySelector('.lightbox-next').addEventListener('click', function () {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                showLightbox(currentImageIndex);
+            });
+
+            // Load more functionality
+            const loadMoreBtn = document.getElementById('load-more');
+            let isLoaded = false;
+
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', function () {
+                    if (!isLoaded) {
+                        // Simulate loading more content
+                        this.textContent = 'Loading...';
+                        this.disabled = true;
+
+                        setTimeout(() => {
+                            this.textContent = 'All Projects Loaded';
+                            this.classList.add('opacity-50', 'cursor-not-allowed');
+                            isLoaded = true;
+                        }, 1500);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

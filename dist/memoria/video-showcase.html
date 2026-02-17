@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria Production - Cinematic Showcase</title>
+    <meta name="description" content="Experience Memoria Production's cinematic storytelling through an immersive scroll-controlled video journey.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif'],
+                        'accent': ['Crimson Text', 'serif']
+                    },
+                    colors: {
+                        'charcoal': '#2C2C2C',
+                        'warm-white': '#FAFAFA',
+                        'taupe': '#E8E2D5',
+                        'sage': '#A8B5A0',
+                        'warm-gold': '#D4AF37'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #FAFAFA;
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(44, 44, 44, 0.3), rgba(44, 44, 44, 0.3)), url('/assets/hero-home-D3wbLyMu.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .video-showcase {
+            position: relative;
+            height: 500vh; /* 5x viewport height for scroll progression */
+        }
+        
+        .video-frame {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .video-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .video-content.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .video-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.9) contrast(1.1);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,0.3) 80%);
+            z-index: 2;
+        }
+        
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 10%;
+            right: 10%;
+            z-index: 3;
+            color: white;
+            text-align: center;
+        }
+        
+        .progress-indicator {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .progress-dot.active {
+            background: #D4AF37;
+            border-color: #D4AF37;
+            transform: scale(1.3);
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+        
+        .scroll-hint::after {
+            content: '';
+            display: block;
+            width: 2px;
+            height: 40px;
+            background: white;
+            margin: 1rem auto 0;
+            animation: scroll-pulse 2s infinite;
+        }
+        
+        @keyframes scroll-pulse {
+            0%, 100% { opacity: 0.3; height: 40px; }
+            50% { opacity: 1; height: 60px; }
+        }
+        
+        .chapter-marker {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(212, 175, 55, 0.9);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float-gentle 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: -2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 30%;
+            left: 20%;
+            animation-delay: -4s;
+        }
+        
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(45deg, #D4AF37, #F4E4BC, #D4AF37);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 4s ease infinite;
+        }
+        
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .section-divider {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #D4AF37, #F4E4BC);
+            color: white;
+            text-align: center;
+        }
+        
+        .final-cta {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 44, 44, 0.8), rgba(44, 44, 44, 0.8)), url('/assets/hero-contact-CkQSOIfo.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .progress-indicator {
+                right: 1rem;
+                gap: 0.75rem;
+            }
+            
+            .progress-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .video-text {
+                bottom: 15%;
+                left: 5%;
+                right: 5%;
+            }
+            
+            .chapter-marker {
+                top: 1rem;
+                left: 1rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="floating-elements">
+            <div class="floating-element w-20 h-20 border-2 border-warm-gold rounded-full"></div>
+            <div class="floating-element w-16 h-16 bg-warm-gold rounded-full"></div>
+            <div class="floating-element w-12 h-12 border-2 border-warm-gold rounded-full"></div>
+        </div>
+        
+        <div class="video-frame">
+            <div class="video-content active">
+                <img src="https://kimi-web-img.moonshot.cn/img/files.worldsbestweddingphotos.com/83c78583606faafd7b06f24df94cb69d05fc557b.jpg" alt="Wedding couple in golden hour">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h1 class="text-6xl md:text-8xl font-display font-bold mb-6 gradient-text">Memoria</h1>
+                    <p class="text-xl md:text-2xl font-light mb-4">Capturing Life's Masterpieces</p>
+                    <p class="text-lg opacity-80">Scroll to begin your cinematic journey</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-hint">
+            <p class="text-sm uppercase tracking-wider">Scroll to explore</p>
+        </div>
+    </section>
+
+    <!-- Progress Indicator -->
+    <div class="progress-indicator">
+        <div class="progress-dot active" data-frame="0"></div>
+        <div class="progress-dot" data-frame="1"></div>
+        <div class="progress-dot" data-frame="2"></div>
+        <div class="progress-dot" data-frame="3"></div>
+        <div class="progress-dot" data-frame="4"></div>
+        <div class="progress-dot" data-frame="5"></div>
+        <div class="progress-dot" data-frame="6"></div>
+        <div class="progress-dot" data-frame="7"></div>
+    </div>
+
+    <!-- Video Showcase -->
+    <section class="video-showcase">
+        <!-- Frame 1: Wedding Ceremony -->
+        <div class="video-frame" data-frame="1">
+            <div class="video-content">
+                <div class="chapter-marker">Chapter 1</div>
+                <img src="https://kimi-web-img.moonshot.cn/img/www.marthastewart.com/da4a358cfaa6a88018d301062e29d58db784f6fd.jpg" alt="Wedding ceremony altar">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold mb-4">Sacred Moments</h2>
+                    <p class="text-lg opacity-90 max-w-2xl mx-auto">Where love stories begin their forever</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frame 2: Wedding Reception -->
+        <div class="video-frame" data-frame="2">
+            <div class="video-content">
+                <div class="chapter-marker">Chapter 2</div>
+                <img src="https://kimi-web-img.moonshot.cn/img/www.brides.com/94700a9cb8694df61f91cfb411ba5322d496d413.jpg" alt="Wedding reception dancing">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold mb-4">Joyful Celebration</h2>
+                    <p class="text-lg opacity-90 max-w-2xl mx-auto">Every moment filled with laughter and dance</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frame 3: Proposal -->
+        <div class="video-frame" data-frame="3">
+            <div class="video-content">
+                <div class="chapter-marker">Chapter 3</div>
+                <img src="https://kimi-web-img.moonshot.cn/img/images.squarespace-cdn.com/4f9243c62d679dc54ea34437a3d99688cfddd8ea.jpeg" alt="Engagement proposal">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold mb-4">The Perfect Yes</h2>
+                    <p class="text-lg opacity-90 max-w-2xl mx-auto">When hearts align in perfect harmony</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frame 4: Birthday -->
+        <div class="video-frame" data-frame="4">
+            <div class="video-content">
+                <div class="chapter-marker">Chapter 4</div>
+                <img src="https://kimi-web-img.moonshot.cn/img/media-api.xogrp.com/d063726bd5dbf8c46fd93671b1a2a23daa483daa.2022" alt="Birthday celebration">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold mb-4">Milestone Moments</h2>
+                    <p class="text-lg opacity-90 max-w-2xl mx-auto">Celebrating life's precious milestones</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frame 5: Corporate -->
+        <div class="video-frame" data-frame="5">
+            <div class="video-content">
+                <div class="chapter-marker">Chapter 5</div>
+                <img src="https://kimi-web-img.moonshot.cn/img/creativeeventsphotography.com.au/8164daf07e43f495655f64237a27365c5fac53de.jpg" alt="Corporate event">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold mb-4">Professional Excellence</h2>
+                    <p class="text-lg opacity-90 max-w-2xl mx-auto">Where business meets artistic vision</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frame 6: Behind the Scenes -->
+        <div class="video-frame" data-frame="6">
+            <div class="video-content">
+                <div class="chapter-marker">Chapter 6</div>
+                <img src="https://kimi-web-img.moonshot.cn/img/i.ytimg.com/08bef7d808290f989a830909e805759e742bb771.jpg" alt="Behind the scenes">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold mb-4">Behind the Magic</h2>
+                    <p class="text-lg opacity-90 max-w-2xl mx-auto">The artistry that brings your story to life</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frame 7: Final Portfolio -->
+        <div class="video-frame" data-frame="7">
+            <div class="video-content">
+                <div class="chapter-marker">Finale</div>
+                <img src="https://kimi-web-img.moonshot.cn/img/amyabbottevents.com/dbc1305906ef6dcfbb2be6d838d91c835425ba80.jpg" alt="Portfolio highlight">
+                <div class="video-overlay"></div>
+                <div class="video-text">
+                    <h2 class="text-4xl md:text-6xl font-display font-bold mb-4">Your Story Awaits</h2>
+                    <p class="text-lg opacity-90 max-w-2xl mx-auto">Every moment deserves to be remembered beautifully</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <section class="section-divider">
+        <div class="text-center">
+            <h2 class="text-5xl md:text-7xl font-display font-bold mb-6">The Art of Storytelling</h2>
+            <p class="text-xl md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+                Through cinematic vision and artistic excellence, we transform your most precious moments into timeless memories
+            </p>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="py-20 bg-warm-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12 text-center">
+                <div class="scroll-reveal">
+                    <div class="text-5xl md:text-6xl font-display font-bold text-warm-gold mb-4">
+                        <span class="stat-number" data-target="500">0</span>+
+                    </div>
+                    <h3 class="text-2xl font-display font-semibold text-charcoal mb-2">Stories Captured</h3>
+                    <p class="text-charcoal/70">Over 500 beautiful moments transformed into art</p>
+                </div>
+                
+                <div class="scroll-reveal">
+                    <div class="text-5xl md:text-6xl font-display font-bold text-warm-gold mb-4">
+                        <span class="stat-number" data-target="98">0</span>%
+                    </div>
+                    <h3 class="text-2xl font-display font-semibold text-charcoal mb-2">Client Satisfaction</h3>
+                    <p class="text-charcoal/70">Consistently exceeding expectations with excellence</p>
+                </div>
+                
+                <div class="scroll-reveal">
+                    <div class="text-5xl md:text-6xl font-display font-bold text-warm-gold mb-4">
+                        <span class="stat-number" data-target="6">0</span>
+                    </div>
+                    <h3 class="text-2xl font-display font-semibold text-charcoal mb-2">Years of Artistry</h3>
+                    <p class="text-charcoal/70">Dedicated to the craft of visual storytelling</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-5xl md:text-7xl font-display font-bold mb-6">Your Story Begins Here</h2>
+                <p class="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto leading-relaxed">
+                    Let's create something beautiful together. Every moment deserves to be captured with artistic excellence.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="/contact" class="bg-warm-gold text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg">
+                        Book Your Session
+                    </a>
+                    <a href="/services" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-charcoal transition-all transform hover:scale-105">
+                        View Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Scroll-controlled video showcase
+        let currentFrame = 0;
+        const totalFrames = 8;
+        const videoContents = document.querySelectorAll('.video-content');
+        const progressDots = document.querySelectorAll('.progress-dot');
+        
+        // Initialize
+        function initVideoShowcase() {
+            // Set initial states
+            updateFrame(0);
+            
+            // Scroll event listener
+            window.addEventListener('scroll', handleScroll);
+            
+            // Progress dot clicks
+            progressDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    scrollToFrame(index);
+                });
+            });
+        }
+        
+        function handleScroll() {
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            
+            // Calculate progress through the video showcase section
+            const videoSection = document.querySelector('.video-showcase');
+            const videoSectionTop = videoSection.offsetTop;
+            const videoSectionHeight = videoSection.offsetHeight;
+            
+            if (scrollTop >= videoSectionTop && scrollTop <= videoSectionTop + videoSectionHeight) {
+                const progress = (scrollTop - videoSectionTop) / videoSectionHeight;
+                const frame = Math.floor(progress * (totalFrames - 1));
+                updateFrame(frame);
+            }
+        }
+        
+        function updateFrame(frameIndex) {
+            if (frameIndex === currentFrame) return;
+            
+            currentFrame = frameIndex;
+            
+            // Update video contents
+            videoContents.forEach((content, index) => {
+                if (index === frameIndex) {
+                    content.classList.add('active');
+                } else {
+                    content.classList.remove('active');
+                }
+            });
+            
+            // Update progress dots
+            progressDots.forEach((dot, index) => {
+                if (index === frameIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        function scrollToFrame(frameIndex) {
+            const videoSection = document.querySelector('.video-showcase');
+            const videoSectionTop = videoSection.offsetTop;
+            const videoSectionHeight = videoSection.offsetHeight;
+            
+            const targetScroll = videoSectionTop + (frameIndex / (totalFrames - 1)) * videoSectionHeight;
+            
+            window.scrollTo({
+                top: targetScroll,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Animate statistics
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                anime({
+                    targets: stat,
+                    innerHTML: [0, target],
+                    duration: 2000,
+                    delay: 500,
+                    round: 1,
+                    easing: 'easeOutExpo'
+                });
+            });
+        }
+        
+        // Intersection Observer for scroll reveals
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains('scroll-reveal')) {
+                        anime({
+                            targets: entry.target,
+                            opacity: [0.9, 1],
+                            translateY: [20, 0],
+                            duration: 800,
+                            easing: 'easeOutExpo'
+                        });
+                    }
+                    
+                    if (entry.target.querySelector('.stat-number')) {
+                        animateStats();
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements
+        document.addEventListener('DOMContentLoaded', function() {
+            initVideoShowcase();
+            
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+            scrollElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
