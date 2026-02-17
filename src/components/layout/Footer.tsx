@@ -31,7 +31,7 @@ export function Footer() {
             <h4 className="text-lg font-serif font-semibold text-white mb-6">Company</h4>
             <ul className="space-y-4 text-muted-foreground">
               <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link></li>
+              <li><Link to="/services" className="hover:text-primary transition-colors">Portfolio</Link></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors">Pricing</Link></li>
               <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
@@ -78,3 +78,4 @@ export function Footer() {
     </footer>
   );
 }
+
