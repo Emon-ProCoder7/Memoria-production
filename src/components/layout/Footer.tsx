@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Camera, Mail, MapPin, Phone } from 'lucide-react';
 import { SOCIALS } from '@/lib/constants';
 
@@ -19,20 +20,20 @@ export function Footer() {
           <div>
             <h4 className="text-lg font-serif font-semibold text-white mb-6">Services</h4>
             <ul className="space-y-4 text-muted-foreground">
-              <li><a href="/weddings" className="hover:text-primary transition-colors">Wedding Photography</a></li>
-              <li><a href="/proposals" className="hover:text-primary transition-colors">Engagement Shoots</a></li>
-              <li><a href="/birthdays" className="hover:text-primary transition-colors">Event Videography</a></li>
-              <li><a href="/corporate" className="hover:text-primary transition-colors">Corporate Branding</a></li>
+              <li><Link to="/weddings" className="hover:text-primary transition-colors">Wedding Photography</Link></li>
+              <li><Link to="/proposals" className="hover:text-primary transition-colors">Engagement Shoots</Link></li>
+              <li><Link to="/birthdays" className="hover:text-primary transition-colors">Event Videography</Link></li>
+              <li><Link to="/corporate" className="hover:text-primary transition-colors">Corporate Branding</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="text-lg font-serif font-semibold text-white mb-6">Company</h4>
             <ul className="space-y-4 text-muted-foreground">
-              <li><a href="/about" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="https://memoriaproduction.com/portfolio" className="hover:text-primary transition-colors">Portfolio</a></li>
-              <li><a href="/contact" className="hover:text-primary transition-colors">Pricing</a></li>
-              <li><a href="/contact" className="hover:text-primary transition-colors">Contact</a></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link to="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Pricing</Link></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -69,12 +70,11 @@ export function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p>© 2026 Memoria Production LLC. All rights reserved.</p>
           <div className="flex gap-8">
-            <a href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms-and-conditions" className="hover:text-white transition-colors">Terms of Service</a>
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/terms-and-conditions" className="hover:text-white transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-
