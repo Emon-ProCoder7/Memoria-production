@@ -366,7 +366,7 @@ export default function AboutPage() {
               >
                 Start Your Journey
               </button>
-              <button onClick={() => window.location.href = 'https://memoriaproduction.com/portfolio'}
+              <button onClick={() => window.location.href = 'https://memoriaproduction.com/services'}
                 className="border-2 border-charcoal text-charcoal px-8 py-4 rounded-full text-lg font-semibold hover:bg-charcoal hover:text-white transition-all transform hover:scale-105"
               >
                 View Our Work
