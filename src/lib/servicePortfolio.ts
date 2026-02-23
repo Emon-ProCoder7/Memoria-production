@@ -194,12 +194,12 @@ export const SERVICE_CATEGORIES: ServiceCategory[] = [
     slug: 'behind-scenes',
     title: 'Behind the Scenes',
     description: 'A look at the creative process, team, and production craft.',
-    heroImage: 'https://raw.githubusercontent.com/Emon-ProCoder7/Memoria-production/refs/heads/main/memoria/resources/memoria%20watermark.jpg',
+    heroImage: '/resources/memoria-watermark.jpg',
     items: [
       {
         title: 'Behind the Lens',
         subtitle: 'Professional at Work',
-        image: 'https://raw.githubusercontent.com/Emon-ProCoder7/Memoria-production/refs/heads/main/memoria/resources/memoria%20watermark.jpg',
+        image: '/resources/memoria-watermark.jpg',
         alt: 'Photographer behind scenes',
       },
       {
