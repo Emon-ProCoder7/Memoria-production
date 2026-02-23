@@ -9,7 +9,7 @@ export type ServiceDescription = {
 
 export const SERVICE_DESCRIPTIONS: Record<ServiceSlug | 'all', ServiceDescription> = {
   all: {
-    title: 'Our Portfolio',
+    
     shortDescription: 'A curated collection of our finest work across all services.',
     fullDescription: 'Welcome to our complete portfolio showcasing the breadth and depth of our creative expertise. From intimate proposals to grand corporate galas, we bring the same artistic vision, technical precision, and heartfelt dedication to every project. Each image tells a story, each moment is preserved with cinematic elegance.',
     highlights: ['500+ Events Captured', 'Award-Winning Photography', 'Full-Day Coverage Available', 'Professional Editing & Retouching'],
