@@ -1,16 +1,17 @@
 {
-  "rewrites": [
-    {
-      "source": "/memoria/(.*)",
-      "destination": "/memoria/$1"
-    },
-    {
-      "source": "/assets/(.*)",
-      "destination": "/assets/$1"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/"
-    }
-  ]
+    "cleanUrls": false,
+    "rewrites": [
+        {
+            "source": "/privacy-policy",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/terms-and-conditions",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/((?!memoria/).*)",
+            "destination": "/index.html"
+        }
+    ]
 }
