@@ -8,10 +8,6 @@
         {
             "source": "/terms-and-conditions",
             "destination": "/index.html"
-        },
-        {
-            "source": "/((?!memoria/).*)",
-            "destination": "/index.html"
         }
     ]
 }
