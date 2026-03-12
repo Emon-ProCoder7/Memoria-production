@@ -1,5 +1,5 @@
 {
-    "cleanUrls": true,
+    "cleanUrls": false,
     "rewrites": [
         {
             "source": "/privacy-policy",
@@ -7,6 +7,10 @@
         },
         {
             "source": "/terms-and-conditions",
+            "destination": "/index.html"
+        },
+        {
+            "source": "/((?!memoria/).*)",
             "destination": "/index.html"
         }
     ]
