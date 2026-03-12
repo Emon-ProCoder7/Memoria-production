@@ -2,6 +2,18 @@
     "cleanUrls": false,
     "rewrites": [
         {
+            "source": "/contact",
+            "destination": "/memoria/contact.html"
+        },
+        {
+            "source": "/about",
+            "destination": "/memoria/about.html"
+        },
+        {
+            "source": "/portfolio",
+            "destination": "/memoria/portfolio.html"
+        },
+        {
             "source": "/privacy-policy",
             "destination": "/index.html"
         },
