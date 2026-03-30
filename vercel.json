@@ -2,6 +2,22 @@
     "cleanUrls": false,
     "rewrites": [
         {
+            "source": "/photo-vault",
+            "destination": "https://memoria-photographyvault.vercel.app/photo-vault"
+        },
+        {
+            "source": "/photo-vault/:path*",
+            "destination": "https://memoria-photographyvault.vercel.app/photo-vault/:path*"
+        },
+        {
+            "source": "/video-vault",
+            "destination": "https://memoria-production-portfolio.vercel.app/video-vault"
+        },
+        {
+            "source": "/video-vault/:path*",
+            "destination": "https://memoria-production-portfolio.vercel.app/video-vault/:path*"
+        },
+        {
             "source": "/contact",
             "destination": "/memoria/contact.html"
         },
